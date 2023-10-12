@@ -19,13 +19,11 @@ public class LngLatHandler implements LngLatHandling {
        return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 
     }
-
     public boolean isCloseTo (LngLat startPosition, LngLat otherPosition){
         // *Simplified if statement* : If less than 0.00015 return True
         // This is taken directly from the specification
         return distanceTo(startPosition, otherPosition) < 0.00015;
     }
-
     @Override
     public boolean isInRegion(LngLat position, NamedRegion region) {
         int counter = 0;
@@ -72,7 +70,6 @@ public class LngLatHandler implements LngLatHandling {
         }
         // An odd counter returns true as per the Ray Casting Algo
         return counter % 2 != 0;
-
     }
     boolean isValidAngle(double angle) {
         // helper method for nextPosition
@@ -85,14 +82,12 @@ public class LngLatHandler implements LngLatHandling {
         }
         return false;
     }
-
     @Override
     public LngLat nextPosition(LngLat startPosition, double angle) {
         //First check for all the valid angles in the 16 point directions
         if (!isValidAngle(angle)) {
             throw new IllegalArgumentException("Invalid angle. Angle must be one of the 16-point compass directions.");
         }
-
         double moveDistance = 0.00015;
         // Use trig to find the new Lng and Lats
         // Start by finding the amount we have to increase by
@@ -106,6 +101,5 @@ public class LngLatHandler implements LngLatHandling {
         double newLat = startPosition.lat() + increaseLatBy;
 
         return new LngLat(newLng,newLat);
-
     }
 }
