@@ -4,7 +4,6 @@ import uk.ac.ed.inf.ilp.data.LngLat;
 import uk.ac.ed.inf.ilp.data.NamedRegion;
 import uk.ac.ed.inf.ilp.interfaces.LngLatHandling;
 import java.lang.Math;
-
 public class LngLatHandler implements LngLatHandling {
     @Override
     public double distanceTo (LngLat startPosition, LngLat endPosition){
@@ -16,7 +15,7 @@ public class LngLatHandler implements LngLatHandling {
         double y2 = endPosition.lat();
 
         // Apply the Algo (This is measured in Degrees)
-       return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+        return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 
     }
     public boolean isCloseTo (LngLat startPosition, LngLat otherPosition){
@@ -59,7 +58,7 @@ public class LngLatHandler implements LngLatHandling {
                     && position.lat() <= Math.max(namedVertices[i].lat(), namedVertices[b].lat())){
                 // Check that Pos(x) lies to the right of vertices i(x) or i+1(x)
                 if (position.lng() < namedVertices[i].lng()
-                || position.lng() < namedVertices[b].lng()){
+                        || position.lng() < namedVertices[b].lng()){
                     // Check that x intersects the line in which case we can increase the counter
                     double xIntersect = namedVertices[i].lng() + ((position.lat()-namedVertices[i].lat()) / verticesGradient);
                     if (xIntersect > position.lng()){
@@ -103,3 +102,4 @@ public class LngLatHandler implements LngLatHandling {
         return new LngLat(newLng,newLat);
     }
 }
+
